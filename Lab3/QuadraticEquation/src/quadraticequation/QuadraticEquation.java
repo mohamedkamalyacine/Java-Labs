@@ -1,16 +1,21 @@
 package quadraticequation;
 
 import static java.lang.Math.*;
+import java.util.function.Function;
 
-public class QuadraticEquation {
-   static void calcRoots(int a, int b, int c){
+public class QuadraticEquation implements Function<Float [], Void>{
+    @Override
+    public Void apply(Float arrFloats[]){
+       float a = arrFloats[0];
+       float b = arrFloats[1];
+       float c = arrFloats[2];
        if(a == 0)
        {
            System.out.println("a cannot equal to 0");
-           return;
+           return null;
        }
        
-       int d = (b*b) - (4 * a * c);
+       float d = (b*b) - (4 * a * c);
        double sqrtVal = sqrt(abs(d));
        
        if(d > 0)
@@ -34,9 +39,10 @@ public class QuadraticEquation {
        {
            System.out.println("The equation roots are complex");
            double x1 = (-(double)b) / (2*a);
-           double x2 = ((double)b) / (2*a);
-           System.out.println("X1 = " + x1 + " i" + sqrtVal);
-           System.out.println("X1 = " + x1 + " i" + sqrtVal);
+           double x2 = (-(double)b) / (2*a);
+           System.out.println("X1 = " + x1 + " + i" + sqrtVal);
+           System.out.println("X1 = " + x2 + " - i" + sqrtVal);
        }
+        return null;
    }
 }
